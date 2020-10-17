@@ -11,7 +11,7 @@ import RxSwift
 import RxTest
 import Dispatch
 
-#if os(Linux)
+#if os(Linux) || os(Android)
     import Glibc
 #else
     import Foundation
@@ -378,7 +378,7 @@ extension DisposableTest {
                     increment(count)
                     expectation.fulfill()
                 }
-                #if os(Linux)
+                #if os(Linux) || os(Android)
                     let roll = Glibc.random() & 1
                 #else
                     let roll = arc4random_uniform(2) 
