@@ -19,7 +19,7 @@ extension Target {
     #if os(Linux) || os(Android)
       return [.target(name: "RxCocoa", dependencies: ["RxSwift", "RxRelay"])]
     #else
-      return [.target(name: "RxCocoa", dependencies: ["RxSwift", "RxRelay", "RxCocoaRuntime"])]
+      return [.target(name: "RxCocoa", dependencies: ["RxSwift", "RxRelay"])]
     #endif
   }
 
@@ -44,7 +44,7 @@ let package = Package(
   name: "RxSwift",
   products: ([
     [
-      .library(name: "RxSwift", targets: ["RxSwift"]),
+      .library(name: "RxSwift", targets: ["RxSwift", "RxCocoa"]),
       .library(name: "RxCocoa", targets: ["RxCocoa"]),
       .library(name: "RxRelay", targets: ["RxRelay"]),
       .library(name: "RxBlocking", targets: ["RxBlocking"]),
